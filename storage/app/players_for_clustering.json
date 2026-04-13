@@ -1,0 +1,542 @@
+[
+    {
+        "player_id": 1,
+        "name": "Alphonso Torp",
+        "goals": 31,
+        "assists": 39,
+        "points": 70,
+        "penalty_minutes": 33,
+        "plus_minus": 14
+    },
+    {
+        "player_id": 2,
+        "name": "Mrs. Ruby Mills",
+        "goals": 19,
+        "assists": 23,
+        "points": 42,
+        "penalty_minutes": 29,
+        "plus_minus": 9
+    },
+    {
+        "player_id": 3,
+        "name": "Prof. Devon Wyman",
+        "goals": 31,
+        "assists": 18,
+        "points": 49,
+        "penalty_minutes": 28,
+        "plus_minus": 1
+    },
+    {
+        "player_id": 4,
+        "name": "Felipa Spinka",
+        "goals": 17,
+        "assists": 25,
+        "points": 42,
+        "penalty_minutes": 31,
+        "plus_minus": 15
+    },
+    {
+        "player_id": 5,
+        "name": "Brayan Baumbach",
+        "goals": 7,
+        "assists": 6,
+        "points": 13,
+        "penalty_minutes": 5,
+        "plus_minus": -13
+    },
+    {
+        "player_id": 6,
+        "name": "Mr. Ricardo Conroy V",
+        "goals": 25,
+        "assists": 16,
+        "points": 41,
+        "penalty_minutes": 22,
+        "plus_minus": -12
+    },
+    {
+        "player_id": 7,
+        "name": "Dominique Bartell",
+        "goals": 23,
+        "assists": 8,
+        "points": 31,
+        "penalty_minutes": 38,
+        "plus_minus": 18
+    },
+    {
+        "player_id": 8,
+        "name": "Mr. Christopher Crona PhD",
+        "goals": 21,
+        "assists": 12,
+        "points": 33,
+        "penalty_minutes": 21,
+        "plus_minus": 7
+    },
+    {
+        "player_id": 9,
+        "name": "Marian Tillman",
+        "goals": 36,
+        "assists": 11,
+        "points": 47,
+        "penalty_minutes": 47,
+        "plus_minus": -3
+    },
+    {
+        "player_id": 10,
+        "name": "Dr. Spencer Armstrong MD",
+        "goals": 22,
+        "assists": 17,
+        "points": 39,
+        "penalty_minutes": 25,
+        "plus_minus": -11
+    },
+    {
+        "player_id": 11,
+        "name": "Miss Mireille Borer MD",
+        "goals": 33,
+        "assists": 26,
+        "points": 59,
+        "penalty_minutes": 46,
+        "plus_minus": 17
+    },
+    {
+        "player_id": 12,
+        "name": "Sonya Windler",
+        "goals": 16,
+        "assists": 34,
+        "points": 50,
+        "penalty_minutes": 8,
+        "plus_minus": 19
+    },
+    {
+        "player_id": 13,
+        "name": "Miss Dolly Herman",
+        "goals": 18,
+        "assists": 8,
+        "points": 26,
+        "penalty_minutes": 54,
+        "plus_minus": -5
+    },
+    {
+        "player_id": 14,
+        "name": "Dr. Katlynn Gutkowski",
+        "goals": 22,
+        "assists": 15,
+        "points": 37,
+        "penalty_minutes": 23,
+        "plus_minus": 4
+    },
+    {
+        "player_id": 15,
+        "name": "Gilda Botsford",
+        "goals": 15,
+        "assists": 28,
+        "points": 43,
+        "penalty_minutes": 54,
+        "plus_minus": 0
+    },
+    {
+        "player_id": 16,
+        "name": "Katlyn Kub PhD",
+        "goals": 20,
+        "assists": 34,
+        "points": 54,
+        "penalty_minutes": 16,
+        "plus_minus": -10
+    },
+    {
+        "player_id": 17,
+        "name": "Brenna Beatty",
+        "goals": 11,
+        "assists": 25,
+        "points": 36,
+        "penalty_minutes": 49,
+        "plus_minus": -11
+    },
+    {
+        "player_id": 18,
+        "name": "Javonte Hackett",
+        "goals": 27,
+        "assists": 16,
+        "points": 43,
+        "penalty_minutes": 11,
+        "plus_minus": -13
+    },
+    {
+        "player_id": 19,
+        "name": "Prof. Hillard Sporer IV",
+        "goals": 22,
+        "assists": 31,
+        "points": 53,
+        "penalty_minutes": 34,
+        "plus_minus": 18
+    },
+    {
+        "player_id": 20,
+        "name": "Miss Aisha Wisozk",
+        "goals": 11,
+        "assists": 19,
+        "points": 30,
+        "penalty_minutes": 43,
+        "plus_minus": 6
+    },
+    {
+        "player_id": 21,
+        "name": "Dr. Alda Anderson MD",
+        "goals": 34,
+        "assists": 39,
+        "points": 73,
+        "penalty_minutes": 1,
+        "plus_minus": -13
+    },
+    {
+        "player_id": 22,
+        "name": "Luella Mayert",
+        "goals": 15,
+        "assists": 18,
+        "points": 33,
+        "penalty_minutes": 57,
+        "plus_minus": 20
+    },
+    {
+        "player_id": 23,
+        "name": "Esteban Legros Sr.",
+        "goals": 13,
+        "assists": 16,
+        "points": 29,
+        "penalty_minutes": 49,
+        "plus_minus": -4
+    },
+    {
+        "player_id": 24,
+        "name": "Mr. Terence Hyatt Jr.",
+        "goals": 25,
+        "assists": 19,
+        "points": 44,
+        "penalty_minutes": 57,
+        "plus_minus": -4
+    },
+    {
+        "player_id": 25,
+        "name": "Prof. Davon Marvin PhD",
+        "goals": 13,
+        "assists": 9,
+        "points": 22,
+        "penalty_minutes": 47,
+        "plus_minus": -5
+    },
+    {
+        "player_id": 26,
+        "name": "Maurice Maggio IV",
+        "goals": 11,
+        "assists": 40,
+        "points": 51,
+        "penalty_minutes": 53,
+        "plus_minus": 12
+    },
+    {
+        "player_id": 27,
+        "name": "Miss Kelli Ryan",
+        "goals": 30,
+        "assists": 30,
+        "points": 60,
+        "penalty_minutes": 31,
+        "plus_minus": -11
+    },
+    {
+        "player_id": 28,
+        "name": "Dr. Christian Renner",
+        "goals": 15,
+        "assists": 33,
+        "points": 48,
+        "penalty_minutes": 23,
+        "plus_minus": 15
+    },
+    {
+        "player_id": 29,
+        "name": "Rodrigo Welch",
+        "goals": 10,
+        "assists": 39,
+        "points": 49,
+        "penalty_minutes": 22,
+        "plus_minus": 1
+    },
+    {
+        "player_id": 30,
+        "name": "Clarissa Abshire",
+        "goals": 21,
+        "assists": 5,
+        "points": 26,
+        "penalty_minutes": 22,
+        "plus_minus": -11
+    },
+    {
+        "player_id": 31,
+        "name": "Kelli Skiles Jr.",
+        "goals": 7,
+        "assists": 30,
+        "points": 37,
+        "penalty_minutes": 33,
+        "plus_minus": 0
+    },
+    {
+        "player_id": 32,
+        "name": "Annetta Brown Sr.",
+        "goals": 39,
+        "assists": 19,
+        "points": 58,
+        "penalty_minutes": 40,
+        "plus_minus": 5
+    },
+    {
+        "player_id": 33,
+        "name": "Antonietta Reilly",
+        "goals": 19,
+        "assists": 5,
+        "points": 24,
+        "penalty_minutes": 15,
+        "plus_minus": -10
+    },
+    {
+        "player_id": 34,
+        "name": "Muhammad Dickinson",
+        "goals": 19,
+        "assists": 25,
+        "points": 44,
+        "penalty_minutes": 42,
+        "plus_minus": 17
+    },
+    {
+        "player_id": 35,
+        "name": "Hilario Bins",
+        "goals": 21,
+        "assists": 18,
+        "points": 39,
+        "penalty_minutes": 4,
+        "plus_minus": 0
+    },
+    {
+        "player_id": 36,
+        "name": "Muhammad Franecki",
+        "goals": 11,
+        "assists": 12,
+        "points": 23,
+        "penalty_minutes": 21,
+        "plus_minus": -7
+    },
+    {
+        "player_id": 37,
+        "name": "Icie Corwin",
+        "goals": 6,
+        "assists": 11,
+        "points": 17,
+        "penalty_minutes": 25,
+        "plus_minus": 15
+    },
+    {
+        "player_id": 38,
+        "name": "Dr. Kenyon Hickle III",
+        "goals": 28,
+        "assists": 10,
+        "points": 38,
+        "penalty_minutes": 44,
+        "plus_minus": 4
+    },
+    {
+        "player_id": 39,
+        "name": "Jamaal Carter III",
+        "goals": 12,
+        "assists": 23,
+        "points": 35,
+        "penalty_minutes": 22,
+        "plus_minus": 19
+    },
+    {
+        "player_id": 40,
+        "name": "Miss Emie Mertz",
+        "goals": 33,
+        "assists": 18,
+        "points": 51,
+        "penalty_minutes": 37,
+        "plus_minus": -10
+    },
+    {
+        "player_id": 41,
+        "name": "Prof. Caleb Hauck",
+        "goals": 23,
+        "assists": 7,
+        "points": 30,
+        "penalty_minutes": 43,
+        "plus_minus": 3
+    },
+    {
+        "player_id": 42,
+        "name": "Hunter Lowe Sr.",
+        "goals": 15,
+        "assists": 18,
+        "points": 33,
+        "penalty_minutes": 17,
+        "plus_minus": -14
+    },
+    {
+        "player_id": 43,
+        "name": "Stanford Bergstrom",
+        "goals": 17,
+        "assists": 16,
+        "points": 33,
+        "penalty_minutes": 12,
+        "plus_minus": 20
+    },
+    {
+        "player_id": 44,
+        "name": "Dr. Braulio Krajcik",
+        "goals": 8,
+        "assists": 25,
+        "points": 33,
+        "penalty_minutes": 54,
+        "plus_minus": -15
+    },
+    {
+        "player_id": 45,
+        "name": "Shaun Murazik II",
+        "goals": 38,
+        "assists": 27,
+        "points": 65,
+        "penalty_minutes": 10,
+        "plus_minus": -4
+    },
+    {
+        "player_id": 46,
+        "name": "Prof. Nathaniel Corkery",
+        "goals": 21,
+        "assists": 21,
+        "points": 42,
+        "penalty_minutes": 22,
+        "plus_minus": 18
+    },
+    {
+        "player_id": 47,
+        "name": "Monroe Langosh",
+        "goals": 22,
+        "assists": 16,
+        "points": 38,
+        "penalty_minutes": 7,
+        "plus_minus": -3
+    },
+    {
+        "player_id": 48,
+        "name": "Horacio Spencer",
+        "goals": 13,
+        "assists": 13,
+        "points": 26,
+        "penalty_minutes": 29,
+        "plus_minus": 13
+    },
+    {
+        "player_id": 49,
+        "name": "Martine Lind",
+        "goals": 29,
+        "assists": 28,
+        "points": 57,
+        "penalty_minutes": 59,
+        "plus_minus": 14
+    },
+    {
+        "player_id": 50,
+        "name": "Maryse Kirlin",
+        "goals": 8,
+        "assists": 37,
+        "points": 45,
+        "penalty_minutes": 53,
+        "plus_minus": 10
+    },
+    {
+        "player_id": 51,
+        "name": "Nicolas Runte",
+        "goals": 40,
+        "assists": 21,
+        "points": 61,
+        "penalty_minutes": 21,
+        "plus_minus": 19
+    },
+    {
+        "player_id": 52,
+        "name": "Mallie Connelly",
+        "goals": 8,
+        "assists": 24,
+        "points": 32,
+        "penalty_minutes": 43,
+        "plus_minus": -6
+    },
+    {
+        "player_id": 53,
+        "name": "Dr. Arely Spinka MD",
+        "goals": 18,
+        "assists": 28,
+        "points": 46,
+        "penalty_minutes": 27,
+        "plus_minus": -13
+    },
+    {
+        "player_id": 54,
+        "name": "Dr. Efrain Hills DVM",
+        "goals": 24,
+        "assists": 24,
+        "points": 48,
+        "penalty_minutes": 45,
+        "plus_minus": -6
+    },
+    {
+        "player_id": 55,
+        "name": "Kristoffer Morar Jr.",
+        "goals": 28,
+        "assists": 5,
+        "points": 33,
+        "penalty_minutes": 20,
+        "plus_minus": 13
+    },
+    {
+        "player_id": 56,
+        "name": "Prof. Oma Pacocha",
+        "goals": 35,
+        "assists": 32,
+        "points": 67,
+        "penalty_minutes": 54,
+        "plus_minus": 6
+    },
+    {
+        "player_id": 57,
+        "name": "Naomie Murphy MD",
+        "goals": 35,
+        "assists": 12,
+        "points": 47,
+        "penalty_minutes": 57,
+        "plus_minus": -14
+    },
+    {
+        "player_id": 58,
+        "name": "Chet Kling",
+        "goals": 34,
+        "assists": 30,
+        "points": 64,
+        "penalty_minutes": 3,
+        "plus_minus": -4
+    },
+    {
+        "player_id": 59,
+        "name": "Mr. Jayde Ortiz",
+        "goals": 14,
+        "assists": 15,
+        "points": 29,
+        "penalty_minutes": 36,
+        "plus_minus": 9
+    },
+    {
+        "player_id": 60,
+        "name": "Prof. Mike Kub",
+        "goals": 16,
+        "assists": 13,
+        "points": 29,
+        "penalty_minutes": 47,
+        "plus_minus": 8
+    }
+]

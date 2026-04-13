@@ -1,5 +1,22 @@
 {
     "require": {
-        "livewire/livewire": "^4.2"
+        "laravel/framework": "^10.50",
+        "livewire/livewire": "^4.2",
+        "illuminate/view": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Database\\Factories\\": "database/factories/"
+        }
+    },
+    "require-dev": {
+        "laravel/breeze": "^1.29",
+        "laravel/pail": "^1.2",
+        "laravel/sail": "^1.56",
+        "laravel/tinker": "^3.0",
+        "nunomaduro/collision": "^7.12",
+        "fakerphp/faker": "^1.24"
     }
 }
