@@ -26,27 +26,45 @@
                         <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Recalculate Clusters</button>
                     </form>
                     <h3 class="text-lg font-semibold mb-2">Results</h3>
+                    <!-- Debug: Print unique archetype_label values -->
+                    <?php
+                        $uniqueLabels = collect($results)->pluck('archetype_label')->unique()->values();
+                    ?>
+                    <!-- Debug section removed -->
                     <?php if($results && count($results)): ?>
                         <div class="mb-8">
                             <canvas id="clusterChart" width="400" height="200"></canvas>
                         </div>
-                        <!-- No radar chart in clustering section -->
+                        <!-- Show PNG bar chart if it exists -->
+                        <?php
+                            $barChartPath = Storage::exists('clustering_archetype_counts.png') ? Storage::url('clustering_archetype_counts.png') : null;
+                        ?>
+                        <?php if($barChartPath): ?>
+                            <div class="mb-8">
+                                <img src="<?php echo e($barChartPath); ?>" alt="Archetype Bar Chart" class="rounded shadow max-w-md mx-auto">
+                            </div>
+                        <?php endif; ?>
                         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
                         <script>
-                            // Bar chart for clusters
-                            const clusterCounts = {};
+                            // Bar chart for archetype labels ONLY (robust version)
+                            const clusterLabelCounts = {};
                             <?php $__currentLoopData = $results; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                clusterCounts[<?php echo e($row['archetype']); ?>] = (clusterCounts[<?php echo e($row['archetype']); ?>] || 0) + 1;
+                                if (typeof clusterLabelCounts["<?php echo e($row['archetype_label'] ?? ''); ?>"] === 'undefined') {
+                                    clusterLabelCounts["<?php echo e($row['archetype_label'] ?? ''); ?>"] = 1;
+                                } else {
+                                    clusterLabelCounts["<?php echo e($row['archetype_label'] ?? ''); ?>"] += 1;
+                                }
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            const labels = Object.keys(clusterCounts).sort((a, b) => a - b);
-                            const data = labels.map(k => clusterCounts[k]);
+                            // Use PHP-provided unique label order for consistent display
+                            const labelKeys = <?php echo json_encode($uniqueLabels); ?>;
+                            const labelData = labelKeys.map(k => clusterLabelCounts[k] || 0);
                             new Chart(document.getElementById('clusterChart'), {
                                 type: 'bar',
                                 data: {
-                                    labels: labels.map(l => 'Cluster ' + l),
+                                    labels: labelKeys,
                                     datasets: [{
-                                        label: 'Players per Cluster',
-                                        data: data,
+                                        label: 'Players per Archetype',
+                                        data: labelData,
                                         backgroundColor: 'rgba(54, 162, 235, 0.5)',
                                         borderColor: 'rgb(54, 162, 235)',
                                         borderWidth: 1
@@ -59,67 +77,32 @@
                                 }
                             });
 
-                            // Radar chart for selected player
-                            const playerData = <?php echo json_encode($results, 15, 512) ?>;
-                            const playerSelect = document.getElementById('playerSelect');
-                            const radarCanvas = document.getElementById('radarChart');
-                            let radarChart;
-
-                            function getPlayerMetrics(playerName) {
-                                const found = playerData.find(p => p.player === playerName);
-                                return found ? found.metrics : null;
-                            }
-
-                            function renderRadarChart(metrics) {
-                                if (radarChart) radarChart.destroy();
-                                if (!metrics) return;
-                                radarChart = new Chart(radarCanvas, {
-                                    type: 'radar',
-                                    data: {
-                                        labels: Object.keys(metrics),
-                                        datasets: [{
-                                            label: 'Player Metrics',
-                                            data: Object.values(metrics),
-                                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                            borderColor: 'rgb(255, 99, 132)',
-                                            borderWidth: 2,
-                                            pointBackgroundColor: 'rgb(255, 99, 132)'
-                                        }]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        plugins: { legend: { display: true } },
-                                        scales: {
-                                            r: {
-                                                beginAtZero: true,
-                                                angleLines: { display: true },
-                                                suggestedMin: 0
-                                            }
-                                        }
-                                    }
-                                });
-                            }
-
-                            // Initial render
-                            renderRadarChart(getPlayerMetrics(playerSelect.value));
-                            playerSelect.addEventListener('change', function() {
-                                renderRadarChart(getPlayerMetrics(this.value));
-                            });
+                            // (Removed broken getPlayerMetrics usage. Use only the radar chart code in the separate section below.)
                         </script>
                         <table class="min-w-full border border-gray-300 mb-4">
                             <thead>
                                 <tr>
                                     <th class="px-4 py-2 border-b">Player</th>
                                     <th class="px-4 py-2 border-b">Archetype</th>
-                                    <th class="px-4 py-2 border-b">Metrics</th>
+                                    <th class="px-4 py-2 border-b">Goals</th>
+                                    <th class="px-4 py-2 border-b">Assists</th>
+                                    <th class="px-4 py-2 border-b">Shots</th>
+                                    <th class="px-4 py-2 border-b">Hits</th>
+                                    <th class="px-4 py-2 border-b">PIM</th>
+                                    <th class="px-4 py-2 border-b">TOI</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php $__currentLoopData = $results; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <td class="px-4 py-2 border-b"><?php echo e($row['player'] ?? ''); ?></td>
-                                    <td class="px-4 py-2 border-b"><?php echo e($row['archetype'] ?? ''); ?></td>
-                                    <td class="px-4 py-2 border-b"><?php echo e(json_encode($row['metrics'] ?? [])); ?></td>
+                                    <td class="px-4 py-2 border-b"><?php echo e($row['archetype_label'] ?? ''); ?></td>
+                                    <td class="px-4 py-2 border-b"><?php echo e($row['metrics']['goals'] ?? ''); ?></td>
+                                    <td class="px-4 py-2 border-b"><?php echo e($row['metrics']['assists'] ?? ''); ?></td>
+                                    <td class="px-4 py-2 border-b"><?php echo e($row['metrics']['shots'] ?? ''); ?></td>
+                                    <td class="px-4 py-2 border-b"><?php echo e($row['metrics']['hits'] ?? ''); ?></td>
+                                    <td class="px-4 py-2 border-b"><?php echo e($row['metrics']['pim'] ?? ''); ?></td>
+                                    <td class="px-4 py-2 border-b"><?php echo e($row['metrics']['toi'] ?? ''); ?></td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
@@ -127,7 +110,8 @@
                     <?php else: ?>
                         <p>No clustering results yet.</p>
                     <?php endif; ?>
-                    <!-- Separate Radar Chart Section -->
+
+                    <!-- Radar chart section restored -->
                     <div class="mt-12 mb-8 max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded shadow">
                         <h3 class="text-lg font-semibold mb-4">Player Metrics Radar Chart</h3>
                         <label for="radarPlayerSelect" class="block mb-2 font-semibold">Select Player:</label>
@@ -140,14 +124,39 @@
                     </div>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
                     <script>
-                        // Radar chart for selected player (separate section)
+                        // Radar chart for selected player (separate section) with normalization
                         const radarPlayerData = <?php echo json_encode($results, 15, 512) ?>;
                         const radarPlayerSelect = document.getElementById('radarPlayerSelect');
                         const radarCanvas = document.getElementById('radarChart');
                         let radarChart;
+
+                        // Gather all metrics for normalization
+                        const allMetrics = radarPlayerData.map(p => p.metrics);
+                        const metricKeys = allMetrics.length ? Object.keys(allMetrics[0]) : [];
+                        // Compute min and max for each metric
+                        const metricMins = {};
+                        const metricMaxs = {};
+                        metricKeys.forEach(k => {
+                            metricMins[k] = Math.min(...allMetrics.map(m => m[k]));
+                            metricMaxs[k] = Math.max(...allMetrics.map(m => m[k]));
+                        });
+
                         function getRadarPlayerMetrics(playerName) {
                             const found = radarPlayerData.find(p => p.player === playerName);
-                            return found ? found.metrics : null;
+                            if (!found) return null;
+                            // Normalize metrics
+                            const metrics = found.metrics;
+                            const normalized = {};
+                            metricKeys.forEach(k => {
+                                const min = metricMins[k];
+                                const max = metricMaxs[k];
+                                if (max === min) {
+                                    normalized[k] = 0.5; // avoid div by zero
+                                } else {
+                                    normalized[k] = (metrics[k] - min) / (max - min);
+                                }
+                            });
+                            return normalized;
                         }
                         function renderRadarChart(metrics) {
                             if (radarChart) radarChart.destroy();
@@ -155,10 +164,11 @@
                             radarChart = new Chart(radarCanvas, {
                                 type: 'radar',
                                 data: {
-                                    labels: Object.keys(metrics),
+                                    labels: metricKeys,
                                     datasets: [{
-                                        label: 'Player Metrics',
-                                        data: Object.values(metrics),
+                                            // No label to avoid legend/label inside chart
+                                            label: '',
+                                        data: metricKeys.map(k => metrics[k]),
                                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                                         borderColor: 'rgb(255, 99, 132)',
                                         borderWidth: 2,
@@ -172,7 +182,10 @@
                                         r: {
                                             beginAtZero: true,
                                             angleLines: { display: true },
-                                            suggestedMin: 0
+                                            suggestedMin: 0,
+                                            suggestedMax: 1,
+                                            pointLabels: { display: true },
+                                            ticks: { display: false } // Hide the 0.1, 0.2, ... labels
                                         }
                                     }
                                 }

@@ -35,12 +35,16 @@
                                     <td class="px-4 py-2 border-b"><?php echo e($player->name); ?></td>
                                     <td class="px-4 py-2 border-b space-x-2">
                                         <a href="<?php echo e(route('players.show', $player)); ?>" class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 font-medium transition">View</a>
-                                        <a href="<?php echo e(route('players.edit', $player)); ?>" class="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200 font-medium transition">Edit</a>
-                                        <form action="<?php echo e(route('players.destroy', $player)); ?>" method="POST" class="inline">
-                                            <?php echo csrf_field(); ?>
-                                            <?php echo method_field('DELETE'); ?>
-                                            <button type="submit" class="inline-block px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 font-medium transition">Delete</button>
-                                        </form>
+                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update', $player)): ?>
+                                            <a href="<?php echo e(route('players.edit', $player)); ?>" class="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200 font-medium transition">Edit</a>
+                                        <?php endif; ?>
+                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete', $player)): ?>
+                                            <form action="<?php echo e(route('players.destroy', $player)); ?>" method="POST" class="inline">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
+                                                <button type="submit" class="inline-block px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 font-medium transition">Delete</button>
+                                            </form>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

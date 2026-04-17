@@ -14,10 +14,12 @@ class StatController extends Controller
     }
     public function create()
     {
+        $this->authorize('create', \App\Models\Stat::class);
         return view('stats.create');
     }
     public function store(Request $request)
     {
+        $this->authorize('create', \App\Models\Stat::class);
         $request->validate([
             'player_id' => 'required',
             'game_id' => 'required',
@@ -36,10 +38,12 @@ class StatController extends Controller
     }
     public function edit(Stat $stat)
     {
+        $this->authorize('update', $stat);
         return view('stats.edit', compact('stat'));
     }
     public function update(Request $request, Stat $stat)
     {
+        $this->authorize('update', $stat);
         $request->validate([
             'goals' => 'required|integer',
             'assists' => 'required|integer',
@@ -52,6 +56,7 @@ class StatController extends Controller
     }
     public function destroy(Stat $stat)
     {
+        $this->authorize('delete', $stat);
         $stat->delete();
         return redirect()->route('stats.index');
     }

@@ -13,17 +13,12 @@ class AnalyticsController extends Controller
     {
         // Always read clustering_results.json and log debug info
         $results = [];
-        $debugMsg = '';
-        if (Storage::exists('clustering_results.json')) {
-            $json = Storage::get('clustering_results.json');
+        $path = 'clustering_results.json';
+        if (\Storage::disk('local')->exists($path)) {
+            $json = \Storage::disk('local')->get($path);
             $results = json_decode($json, true);
-            $debugMsg = 'clustering_results.json found. Count: ' . (is_array($results) ? count($results) : 0);
-        } else {
-            $debugMsg = 'clustering_results.json not found.';
         }
-        \Log::info('[CLUSTERING DEBUG] ' . $debugMsg);
-        // Show debug message in UI for troubleshooting
-        return view('analytics.clustering', compact('results'))->with('debug', $debugMsg);
+        return view('analytics.clustering', compact('results'));
     }
 
     public function triggerClustering(Request $request)

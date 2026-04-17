@@ -9,27 +9,68 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?> 
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <?php echo e(__('Dashboard')); ?>
+        <div class="flex items-center gap-3">
+            <?php if (isset($component)) { $__componentOriginal8892e718f3d0d7a916180885c6f012e7 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal8892e718f3d0d7a916180885c6f012e7 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.application-logo','data' => ['class' => 'h-8 w-8']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('application-logo'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'h-8 w-8']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal8892e718f3d0d7a916180885c6f012e7)): ?>
+<?php $attributes = $__attributesOriginal8892e718f3d0d7a916180885c6f012e7; ?>
+<?php unset($__attributesOriginal8892e718f3d0d7a916180885c6f012e7); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal8892e718f3d0d7a916180885c6f012e7)): ?>
+<?php $component = $__componentOriginal8892e718f3d0d7a916180885c6f012e7; ?>
+<?php unset($__componentOriginal8892e718f3d0d7a916180885c6f012e7); ?>
+<?php endif; ?>
+            <h2 class="font-semibold text-xl text-indigo-800 leading-tight">
+                <?php echo e(__('Dashboard')); ?>
 
-        </h2>
+            </h2>
+        </div>
      <?php $__env->endSlot(); ?>
-
     <div class="py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h2 class="text-2xl font-bold mb-4">Welcome to PuckLogic!</h2>
-                    <p class="mb-6 text-lg">Select a feature below:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <a href="/leagues" class="block bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold px-6 py-4 rounded">Leagues</a>
-                        <a href="/teams" class="block bg-green-100 hover:bg-green-200 text-green-800 font-semibold px-6 py-4 rounded">Teams</a>
-                        <a href="/players" class="block bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold px-6 py-4 rounded">Players</a>
-                        <a href="/stats" class="block bg-purple-100 hover:bg-purple-200 text-purple-800 font-semibold px-6 py-4 rounded">Stats</a>
-                        <a href="/analytics/clustering" class="block bg-pink-100 hover:bg-pink-200 text-pink-800 font-semibold px-6 py-4 rounded">Player Clustering</a>
-                        <a href="/analytics/radar" class="block bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-semibold px-6 py-4 rounded">Radar Chart</a>
-                        <a href="/brackets/roundrobin" class="block bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold px-6 py-4 rounded">Round Robin Bracket</a>
-                        <a href="/brackets/seeding" class="block bg-teal-100 hover:bg-teal-200 text-teal-800 font-semibold px-6 py-4 rounded">Bracket Seeding</a>
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-gray-900 overflow-hidden shadow-lg sm:rounded-2xl border border-gray-800">
+                <div class="p-10">
+                    <h2 class="text-3xl font-extrabold mb-4 text-white">Welcome to PuckLogic!</h2>
+                    <p class="mb-8 text-lg text-gray-200">Select a feature to get started:</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <a href="/leagues" class="group block bg-black hover:bg-indigo-700 border border-gray-800 text-white font-semibold px-6 py-8 rounded-2xl shadow transition-colors duration-200 flex flex-col items-center">
+                            <svg class="h-8 w-8 mb-3 text-white group-hover:text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7v4a1 1 0 001 1h3v6a1 1 0 001 1h4a1 1 0 001-1v-6h3a1 1 0 001-1V7"/></svg>
+                            Leagues
+                        </a>
+                        <a href="/teams" class="group block bg-black hover:bg-green-700 border border-gray-800 text-white font-semibold px-6 py-8 rounded-2xl shadow transition-colors duration-200 flex flex-col items-center">
+                            <svg class="h-8 w-8 mb-3 text-white group-hover:text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a4 4 0 00-3-3.87"/><path d="M9 20H4v-2a4 4 0 013-3.87"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h0a4 4 0 014 4v2"/></svg>
+                            Teams
+                        </a>
+                        <a href="/players" class="group block bg-black hover:bg-purple-700 border border-gray-800 text-white font-semibold px-6 py-8 rounded-2xl shadow transition-colors duration-200 flex flex-col items-center">
+                            <svg class="h-8 w-8 mb-3 text-white group-hover:text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h0a4 4 0 014 4v2"/></svg>
+                            Players
+                        </a>
+                        <a href="/stats" class="group block bg-black hover:bg-blue-700 border border-gray-800 text-white font-semibold px-6 py-8 rounded-2xl shadow transition-colors duration-200 flex flex-col items-center">
+                            <svg class="h-8 w-8 mb-3 text-white group-hover:text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="14" y="8" width="3" height="10"/></svg>
+                            Stats
+                        </a>
+                        <a href="/analytics/clustering" class="group block bg-black hover:bg-pink-700 border border-gray-800 text-white font-semibold px-6 py-8 rounded-2xl shadow transition-colors duration-200 flex flex-col items-center">
+                            <svg class="h-8 w-8 mb-3 text-white group-hover:text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                            Player Clustering
+                        </a>
+                        <a href="/brackets/roundrobin" class="group block bg-black hover:bg-cyan-700 border border-gray-800 text-white font-semibold px-6 py-8 rounded-2xl shadow transition-colors duration-200 flex flex-col items-center">
+                            <svg class="h-8 w-8 mb-3 text-white group-hover:text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                            Round Robin Bracket
+                        </a>
+                        <a href="/brackets/seeding" class="group block bg-black hover:bg-pink-900 border border-gray-800 text-white font-semibold px-6 py-8 rounded-2xl shadow transition-colors duration-200 flex flex-col items-center">
+                            <svg class="h-8 w-8 mb-3 text-white group-hover:text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            Bracket Seeding
+                        </a>
                     </div>
                 </div>
             </div>

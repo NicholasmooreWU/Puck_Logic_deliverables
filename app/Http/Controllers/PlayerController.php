@@ -14,11 +14,15 @@ class PlayerController extends Controller
     }
     public function create()
     {
-        return view('players.create');
+        $teams = \App\Models\Team::all();
+        return view('players.create', compact('teams'));
     }
     public function store(Request $request)
     {
-        $request->validate(['name' => 'required']);
+        $request->validate([
+            'name' => 'required',
+            'team_id' => 'required|exists:teams,id',
+        ]);
         Player::create($request->all());
         return redirect()->route('players.index');
     }

@@ -12,14 +12,19 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
+        // Seed coach test account
+        $this->call(\Database\Seeders\CoachTestAccountSeeder::class);
+
         // Create a known commissioner for login
-        $commissioner = \App\Models\User::create([
-            'name' => 'Commissioner',
-            'email' => 'commissioner@pucklogic.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('password'),
-            'remember_token' => \Illuminate\Support\Str::random(10),
-        ]);
+        $commissioner = \App\Models\User::updateOrCreate(
+            [ 'email' => 'commissioner@pucklogic.com' ],
+            [
+                'name' => 'Commissioner',
+                'email_verified_at' => now(),
+                'password' => bcrypt('password'),
+                'remember_token' => \Illuminate\Support\Str::random(10),
+            ]
+        );
 
         // Create 1 more random commissioner
         $commissioners = collect([$commissioner])->merge(
@@ -41,6 +46,7 @@ class DatabaseSeeder extends Seeder
                     $players = \App\Models\Player::factory()->count(10)->create([
                         'team_id' => $team->id,
                     ]);
+                    // For each player, create a user account with is_play_account = true
                     $players->each(function ($player) {
                         // Assign realistic stats
                         $player->goals = rand(5, 40);
@@ -49,6 +55,15 @@ class DatabaseSeeder extends Seeder
                         $player->penalty_minutes = rand(0, 60);
                         $player->plus_minus = rand(-15, 20);
                         $player->save();
+                        // Create a user for this player
+                        \App\Models\User::create([
+                            'name' => $player->name,
+                            'email' => strtolower(str_replace(' ', '.', $player->name)) . '@player.pucklogic.com',
+                            'password' => bcrypt('password'),
+                            'is_play_account' => true,
+                            'email_verified_at' => now(),
+                            'remember_token' => \Illuminate\Support\Str::random(10),
+                        ]);
                     });
                 });
                 // For each league, create 5 games and stats for each player in each game

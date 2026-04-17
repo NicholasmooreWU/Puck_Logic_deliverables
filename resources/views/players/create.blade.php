@@ -15,6 +15,15 @@
                             <input type="text" name="name" id="name" required class="w-full rounded border-gray-300 dark:bg-gray-700 dark:text-gray-100 px-3 py-2 focus:ring focus:ring-blue-200">
                         </div>
                         <div>
+                            <label for="team_id" class="block mb-1 font-medium">Team</label>
+                            <select name="team_id" id="team_id" required class="w-full rounded border-gray-300 dark:bg-gray-700 dark:text-gray-100 px-3 py-2 focus:ring focus:ring-blue-200">
+                                <option value="" disabled selected>Select a team</option>
+                                @foreach($teams as $team)
+                                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
                             <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Create</button>
                             <a href="{{ route('players.index') }}" class="ml-4 text-blue-600 hover:underline">Back</a>
                         </div>

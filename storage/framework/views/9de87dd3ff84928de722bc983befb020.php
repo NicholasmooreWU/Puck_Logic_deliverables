@@ -18,15 +18,7 @@
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             <?php echo $__env->make('layouts.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <!-- Page Heading -->
-            <?php if(isset($header)): ?>
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <?php echo e($header); ?>
-
-                    </div>
-                </header>
-            <?php endif; ?>
+            <!-- Page Heading removed to avoid duplicate logo/box on dashboard -->
 
             <!-- Page Content -->
             <main>

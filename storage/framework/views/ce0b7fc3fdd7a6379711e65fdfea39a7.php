@@ -18,7 +18,9 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 shadow-lg sm:rounded-2xl border border-gray-200 dark:border-gray-700">
                 <div class="p-8 text-gray-900 dark:text-gray-100">
-                    <a href="<?php echo e(route('leagues.create')); ?>" class="inline-block mb-6 px-5 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition">Create League</a>
+                    <?php if(!auth()->user()->is_play_account && !auth()->user()->is_coach): ?>
+                        <a href="<?php echo e(route('leagues.create')); ?>" class="inline-block mb-6 px-5 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition">Create League</a>
+                    <?php endif; ?>
                     <div class="overflow-x-auto rounded-lg">
                         <table class="min-w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-sm">
                             <thead>
@@ -35,12 +37,14 @@
                                     <td class="px-4 py-2 border-b"><?php echo e($league->name); ?></td>
                                     <td class="px-4 py-2 border-b space-x-2">
                                         <a href="<?php echo e(route('leagues.show', $league)); ?>" class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 font-medium transition">View</a>
-                                        <a href="<?php echo e(route('leagues.edit', $league)); ?>" class="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200 font-medium transition">Edit</a>
-                                        <form action="<?php echo e(route('leagues.destroy', $league)); ?>" method="POST" class="inline">
-                                            <?php echo csrf_field(); ?>
-                                            <?php echo method_field('DELETE'); ?>
-                                            <button type="submit" class="inline-block px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 font-medium transition">Delete</button>
-                                        </form>
+                                        <?php if(!auth()->user()->is_play_account && !auth()->user()->is_coach): ?>
+                                            <a href="<?php echo e(route('leagues.edit', $league)); ?>" class="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200 font-medium transition">Edit</a>
+                                            <form action="<?php echo e(route('leagues.destroy', $league)); ?>" method="POST" class="inline">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
+                                                <button type="submit" class="inline-block px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 font-medium transition">Delete</button>
+                                            </form>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

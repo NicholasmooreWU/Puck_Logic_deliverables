@@ -16,6 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         League::class => LeaguePolicy::class,
+        \App\Models\Team::class => \App\Policies\TeamPolicy::class,
+        \App\Models\Stat::class => \App\Policies\StatPolicy::class,
         // Add other model => policy mappings here
     ];
 

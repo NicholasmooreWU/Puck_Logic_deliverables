@@ -9,8 +9,8 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form method="GET" action="" class="mb-6 flex flex-col sm:flex-row items-center gap-2">
-                        <label class="mr-2">Player Name:</label>
-                        <input type="text" name="player" value="{{ request('player') }}" class="rounded border-gray-300 dark:bg-gray-700 dark:text-gray-100 px-2 py-1">
+                        <label for="player-input" class="mr-2">Player Name:</label>
+                        <input id="player-input" type="text" name="player" value="{{ request('player') }}" class="rounded border-gray-300 dark:bg-gray-700 dark:text-gray-100 px-2 py-1" aria-label="Player Name">
                         <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Show</button>
                     </form>
                     @if(isset($metrics))
